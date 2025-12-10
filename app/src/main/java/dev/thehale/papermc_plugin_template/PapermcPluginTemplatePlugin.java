@@ -14,13 +14,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
 
 import dev.thehale.papermc_plugin_template.bstats.Metrics;
+import dev.thehale.papermc_plugin_template.command.ExampleCommand;
 
 public class PapermcPluginTemplatePlugin extends JavaPlugin {
 
     public static PapermcPluginTemplatePlugin instance;
     public static Logger log;
     public final static String NAME = "PapermcPluginTemplate";
-    public final static int BSTATS_PLUGIN_ID = 20765;  // Optional: Replace with your own bStats plugin ID
+    public final static int BSTATS_PLUGIN_ID = 20765;
+    
+    private ConfigManager configManager;
 
     /**
      * Default constructor.
@@ -60,8 +63,20 @@ public class PapermcPluginTemplatePlugin extends JavaPlugin {
     }
 
     private void setup() {
+        configManager = new ConfigManager(this);
+        configManager.reloadConfig();
+        
         getServer().getPluginManager().registerEvents(new PapermcPluginTemplateListener(), this);
-        new Metrics(this, BSTATS_PLUGIN_ID);  // Enable bStats metrics
+        
+        ExampleCommand exampleCommand = new ExampleCommand(this);
+        getCommand("example").setExecutor(exampleCommand);
+        getCommand("example").setTabCompleter(exampleCommand);
+        
+        new Metrics(this, BSTATS_PLUGIN_ID);
+    }
+    
+    public ConfigManager getConfigManager() {
+        return configManager;
     }
 
     @Override
