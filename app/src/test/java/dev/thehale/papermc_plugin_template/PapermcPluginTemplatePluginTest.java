@@ -18,14 +18,7 @@ public class PapermcPluginTemplatePluginTest {
     @Before
     public void setUp() {
         server = MockBukkit.mock();
-        
-        PluginDescriptionFile description = new PluginDescriptionFile(
-            "PapermcPluginTemplate",
-            "0.1.0",
-            "dev.thehale.papermc_plugin_template.PapermcPluginTemplatePlugin"
-        );
-        
-        plugin = MockBukkit.load(PapermcPluginTemplatePlugin.class, description);
+        plugin = MockBukkit.load(PapermcPluginTemplatePlugin.class);
     }
     
     @After
