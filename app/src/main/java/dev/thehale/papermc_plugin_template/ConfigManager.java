@@ -2,6 +2,7 @@ package dev.thehale.papermc_plugin_template;
 
 import java.io.File;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 
 import org.bukkit.configuration.file.FileConfiguration;
@@ -28,8 +29,7 @@ public class ConfigManager {
         
         InputStream defaultStream = plugin.getResource("config.yml");
         if (defaultStream != null) {
-            YamlConfiguration defaultConfig = YamlConfiguration.loadConfiguration(
-                new org.bukkit.configuration.file.YamlConfiguration().load(defaultStream));
+            YamlConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(defaultStream));
             config.setDefaults(defaultConfig);
             config.options().copyDefaults(true);
             saveConfig();
