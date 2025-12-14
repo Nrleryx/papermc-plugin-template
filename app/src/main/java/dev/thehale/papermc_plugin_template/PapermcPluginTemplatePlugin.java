@@ -20,10 +20,20 @@ public class PapermcPluginTemplatePlugin extends JavaPlugin {
     
     private ConfigManager configManager;
 
+    /**
+     * Default constructor.
+     * 
+     * <p>Used solely by MockBukkit during unit tests.
+     */
     public PapermcPluginTemplatePlugin() {
         super();
     }
 
+    /**
+     * Parameterized constructor.
+     * 
+     * <p>Used solely by MockBukkit during unit tests.
+     */
     protected PapermcPluginTemplatePlugin(JavaPluginLoader loader, PluginDescriptionFile description, File dataFolder, File file) {
         super(loader, description, dataFolder, file);
     }
@@ -38,6 +48,7 @@ public class PapermcPluginTemplatePlugin extends JavaPlugin {
     }
 
     private void logTemplateAttribution() {
+        // Please do *not* remove this attribution. It helps other hopeful plugin developers find this template.
         log.info("[ATTRIBUTION] Powered by the PaperMC Plugin Template created by Joseph Hale (https://jhale.dev)");
         log.info("[ATTRIBUTION] Copyright (c) 2021-2024. All rights reserved.");
         log.info("[ATTRIBUTION] Licensed under the terms of the MPL-2.0 license.");
